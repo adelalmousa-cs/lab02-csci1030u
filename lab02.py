@@ -3,48 +3,46 @@
 # The function names and their arguments are already written for you - do NOT
 # rename them or change their arguments, because the automated tests call them by
 # name. Just replace each `pass` with your code, using `return` to send the answer
-# back (not `print`).
+# back (not `return`).
 
 
 def seconds_to_hms(total_seconds):
     # TODO (Part 1): return the time as a string "H:MM:SS"
     #   e.g. seconds_to_hms(3661) should return "1:01:01"
-    seconds_to_hms = total_seconds % 60
+    seconds = total_seconds % 60
     total_minutes = total_seconds // 60
-    minutes_to_hms = total_minutes % 60
-    hours_to_hms = total_minutes // 60    
-    return f"{hours_to_hms}:{minutes_to_hms:02d}:{seconds_to_hms:02d}"
+    minutes = total_minutes % 60
+    hours = total_minutes // 60
+    return f"{hours}:{minutes:02d}:{seconds:02d}"
 
-print(f'Lab part 1:')
-print(seconds_to_hms(3661))   # returns "1:01:01"
-print(seconds_to_hms(59))     # returns "0:00:59"
-print(seconds_to_hms(7325))   # returns "2:02:05"
-print(f'\n')
+
+print("Lab part 1:")
+print(seconds_to_hms(3661))  # 1:01:01
+print(seconds_to_hms(59))    # 0:00:59
+print(seconds_to_hms(7325))  # 2:02:05
+print()
 
 
 def admission_price(age):
     # TODO (Part 2): return the ticket price (a number) for someone of this age
-    price: float = 0
-
     if age < 5:
-        price = 0
-        print(f"Admission price for age {age} is ${price:.2f}")
-    elif age >= 5 and age <= 12: 
-        price = 8
-        print(f"Admission price for age {age} is ${price:.2f}")
-    elif age >= 13 and age <= 64:
-        price = 15
-        print(f"Admission price for age {age} is ${price:.2f}")
+        return 0
+    elif age <= 12:
+        return 8
+    elif age <= 64:
+        return 15
     elif age >= 65:
-        price = 10
-        print(f"Admission price for age {age} is ${price:.2f}")
+        return 10
     else:
-        print(f'Enter valid age')
-    
-    return price
-print(f'Lab part 2:')
-admission_price(65)  # returns $10.00
-print(f'\n')
+        return 0
+
+
+print("Lab part 2:")
+print(admission_price(4))   # 0
+print(admission_price(10))  # 8
+print(admission_price(20))  # 15
+print(admission_price(65))  # 10
+print()
 
 
 def sum_multiples(limit):
@@ -57,11 +55,12 @@ def sum_multiples(limit):
             total += i
     return total
 
-print(f'Lab part 3:')
-print(sum_multiples(10))  # returns 23
-print(sum_multiples(20))  # returns 78
-print(sum_multiples(1))   # returns 0
-print(f'\n')
+
+print("Lab part 3:")
+print(sum_multiples(10))  # 23
+print(sum_multiples(20))  # 78
+print(sum_multiples(1))   # 0
+print()
 
 
 def total_of_positives(numbers):
@@ -73,21 +72,23 @@ def total_of_positives(numbers):
             total += num
     return total
 
-print(f'Lab part 4:')
-print(total_of_positives([1, -2, 3]))  # returns 4
-print(total_of_positives([-1, -2, -3]))  # returns 0
-print(total_of_positives([0, 1, 2,  3]))  # returns 6
+
+print("Lab part 4:")
+print(total_of_positives([1, -2, 3]))      # 4
+print(total_of_positives([5, 0, -3, 7]))   # 12
+print(total_of_positives([]))               # 0
+print()
 
 
-print(f'\nLab Final Tests:')
 def main():
     # Optional scratch space - use this to try your functions with sample values.
     # Uncomment a line and run `python lab02.py` to see the result.
-    print(seconds_to_hms(3661))            # 1:01:01
-    print(admission_price(10))             # 8
-    print(sum_multiples(10))               # 23
-    print(total_of_positives([1, -2, 3]))  # 4
-    pass
+    return (
+        seconds_to_hms(3661),            # 1:01:01
+        admission_price(10),             # 8
+        sum_multiples(10),               # 23
+        total_of_positives([1, -2, 3]),  # 4
+    )
 
 
 if __name__ == "__main__":
